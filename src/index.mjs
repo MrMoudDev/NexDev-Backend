@@ -1,14 +1,16 @@
 // ------>  Paso1: Importamos dependencias (Librerias, paquetes)
 // const express = require('express')                    // CommonJS
 import express from 'express';  // ESModule
-import product from './routes/product.route.mjs';
+
+import user from "./routes/user.route.mjs";
+
 import dbConnect from './config/mongo.config.mjs';
 
 // ------>  Paso2: Ejecutamos Express
 const app = express();   // Invocacion o ejecucion de express
 dbConnect();
 // ------>  Paso3: Crear los EndPoints (Puntos de acceso)
-app.use(product);
+app.use( user );
 
 // ------>  Paso4: Lanzamos el servidor Web usando express escuchando en el puerto 3000
 //                 https://localhost:<port>
