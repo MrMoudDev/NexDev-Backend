@@ -1,14 +1,14 @@
-import { Router } from "express";   // Importando el router de express
+import express from "express";
 import { createUser } from "../controller/user.controller.mjs";
 
+const router = express.Router()   //invocando el router de express
 
-const router = Router()             // Invocando Router (preparandolo para definir rutas)
+// Definir las rutas para la entidad de user.
 
-
-// Define las rutas de acceso 
-
-router.post("/api/users", createUser );
+router.post( "/api/user", createUser)
 
 
 
-export default router;       // Exportando 
+// Exponer el router de este archivo para ser usado por otros en la aplicacion 
+
+export default router;

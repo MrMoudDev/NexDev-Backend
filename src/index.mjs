@@ -8,9 +8,16 @@ import dbConnect from './config/mongo.config.mjs';
 
 // ------>  Paso2: Ejecutamos Express
 const app = express();   // Invocacion o ejecucion de express
+
 dbConnect();
 // ------>  Paso3: Crear los EndPoints (Puntos de acceso)
-app.use( user );
+
+app.use(express.json())
+
+
+app.use(user)  // Implementando las rutas de user
+
+
 
 // ------>  Paso4: Lanzamos el servidor Web usando express escuchando en el puerto 3000
 //                 https://localhost:<port>
