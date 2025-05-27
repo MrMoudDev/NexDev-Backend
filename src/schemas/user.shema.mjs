@@ -1,8 +1,5 @@
 // Define la estructura del documento que se va a registrar
-
-import { time } from "console";
 import mongoose from "mongoose";
-import { type } from "os";
 
 const userShema = new mongoose.Schema({
     name: {

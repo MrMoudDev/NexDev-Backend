@@ -19,6 +19,38 @@ const createUser = async (req, res) => {
 
 }
 
+const getAllUser = async (req, res) => {
+    
+    try {
+        const data = await userModel.find({});
+        res.json(data);
+    } catch (error) {
+        console.error(error)
+        res.json({msg: "Error; No se pudo obtener el listado de user "})
+    }
+}
+
+const getUserById = async (req, res) => {
+    const userId = req.params.id;      // El nombre final dependera del parametro de la ruta
+
+    try {
+        //const data = await userModel.findById( userId );
+        const data = await userModel.findOne({ _id: userId})
+        
+        if( ! data){
+            return res.json({msg : " El usuario no se encuentra registrado"})
+        }
+
+        res.json( data ); 
+    } catch (error) {
+        console.error(error)
+        res.json({msg: "Erros: no se pudo encontrar el usuario"})
+    }
+}
+
+
 export {
-    createUser
+    createUser,
+    getAllUser,
+    getUserById
 }
