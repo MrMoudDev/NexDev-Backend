@@ -48,9 +48,43 @@ const getUserById = async (req, res) => {
     }
 }
 
+const removeUserById = async (req, res) =>{
+    const userId= req.params.id;
+    
+    try {
+         const data = await userModel.findByIdAndDelete(userId)              //userModel.findOneAndDelete({_id: userId})
+    
+    if( ! data){
+        return res.json({msg : " El usuario no se encuentra registrado"})
+    }
+    
+    res.json(data)
+    } 
+    catch (error) {
+        console.error(error)
+        res.json({msg: "Error: No pudo eliminar el usuario"})
+    }
+}
+
+const updateUserById = async (req, res) => {
+    const userId = req.params.id;
+    const inputData = req.body;
+    
+    try {
+        const data = await userModel.findByIdAndUpdate(userId, inputData, {new: true});
+    //const data =  userModel.findOneAndUpdate({_id: userId})
+    res.json( data );
+    } 
+    catch (error) {
+        console.error(error),
+        res.json({msg: "Error: No se pudo actualizar el producto"})
+    }
+} 
 
 export {
     createUser,
     getAllUser,
-    getUserById
+    getUserById,
+    removeUserById,
+    updateUserById
 }
