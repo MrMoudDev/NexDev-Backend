@@ -1,8 +1,7 @@
-import jwt from "jsonwebtoken";
-
 import bcrypt from "bcrypt";
 
 import userModel from "../schemas/user.shema.mjs";
+import { generateToken } from "../helpers/jwt.helper.mjs";
 
 const loginUser = async (req, res) => {
     // Paso1: Obtener los datos del body que nos ingrese el usuario 
@@ -28,13 +27,8 @@ const loginUser = async (req, res) => {
         email: userFound.email,
         role: userFound.role
     }
-    const JWT_secret = "2mni493idubodhandjao"
-    
-    const token = jwt.sign( 
-        payload,             // Carga util
-        JWT_secret,          // Palabra semilla secreta
-        {expiresIn: "1h"}    //Opciones y coniguraciones del token 
-    )
+
+    const token = generateToken(payload)
 
     //Paso5: Eliminar algunas propiedades que traen datos sensibles
     const objsUser = userFound.toObject()    //convertir un bjson a un objeto javascript 
@@ -52,13 +46,7 @@ const loginUser = async (req, res) => {
 const reNewToken = (req, res) => {
     const payload = req.authUser
 
-    const JWT_secret = "2mni493idubodhandjao"
-
-    const token = jwt.sign( 
-        payload,             // Carga util
-        JWT_secret,          // Palabra semilla secreta
-        {expiresIn: "1h"}    //Opciones y coniguraciones del token 
-    )
+    const token = generateToken( payload )
 
     
     res.json ( token )
