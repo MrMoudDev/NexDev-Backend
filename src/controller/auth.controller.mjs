@@ -49,6 +49,22 @@ const loginUser = async (req, res) => {
     })
 };
 
+const reNewToken = (req, res) => {
+    const payload = req.authUser
+
+    const JWT_secret = "2mni493idubodhandjao"
+
+    const token = jwt.sign( 
+        payload,             // Carga util
+        JWT_secret,          // Palabra semilla secreta
+        {expiresIn: "1h"}    //Opciones y coniguraciones del token 
+    )
+
+    
+    res.json ( token )
+}
+
 export{
-    loginUser
+    loginUser,
+    reNewToken
 }
