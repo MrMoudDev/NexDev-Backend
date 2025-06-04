@@ -7,7 +7,7 @@ const userShema = new mongoose.Schema({
         trim: true,
         required: [true, "El nombre del usuario es obligatorio"],    // Obligatorio
     },
-    
+
     email:{
         type: String,
         trim: true,
@@ -35,7 +35,7 @@ const userShema = new mongoose.Schema({
     versionKey:false    // Contador de las versiones del documento
 });
 
-// Definir el modelo 
+// Definir el modelo
 
 const userModel = mongoose.model(
     "users",                           // Define el nombre de la coleccion donde se guardara los documentos 
