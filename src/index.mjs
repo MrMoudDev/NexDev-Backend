@@ -2,8 +2,6 @@
 // const express = require('express')                    // CommonJS
 import express from 'express';  // ESModule
 
-import companyprofile from "./routes/companyprofile.route.mjs";
-
 import user from "./routes/user.route.mjs";
 
 import dbConnect from './config/mongo.config.mjs';
@@ -20,7 +18,7 @@ app.use(express.json())    //Habilita el iterprete de objetos json
 
 app.use(user)  // Implementando las rutas de user
 
-app.use(companyprofile);
+
 
 app.use( auth )
 
