@@ -1,7 +1,6 @@
 // ------>  Paso1: Importamos dependencias (Librerias, paquetes)
 // const express = require('express')                    // CommonJS
 import express from 'express';  // ESModule
-import developerProfile from './routes/developerProfile.routes.mjs';
 
 import user from "./routes/user.route.mjs";
 
@@ -13,11 +12,10 @@ const app = express();   // Invocacion o ejecucion de express
 dbConnect();
 // ------>  Paso3: Crear los EndPoints (Puntos de acceso)
 
-app.use(express.json())
-
+app.use(express.json())    //Habilita el iterprete de objetos json
 
 app.use(user)  // Implementando las rutas de user
-app.use(developerProfile)
+
 
 
 // ------>  Paso4: Lanzamos el servidor Web usando express escuchando en el puerto 3000
