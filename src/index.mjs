@@ -8,6 +8,8 @@ import user from "./routes/user.route.mjs";
 
 import dbConnect from './config/mongo.config.mjs';
 
+import auth from "./routes/auth.route.mjs";
+
 // ------>  Paso2: Ejecutamos Express
 const app = express();   // Invocacion o ejecucion de express
 
@@ -19,6 +21,8 @@ app.use(express.json())    //Habilita el iterprete de objetos json
 app.use(user)  // Implementando las rutas de user
 
 app.use(companyprofile);
+
+app.use( auth )
 
 // ------>  Paso4: Lanzamos el servidor Web usando express escuchando en el puerto 3000
 //                 https://localhost:<port>
