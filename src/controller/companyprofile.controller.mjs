@@ -63,7 +63,7 @@ const  deleteUserById = async(req, res) => {
     try {
         const data = await companyprofileModel.findByIdAndDelete( companyId )
         
-            if( ! data){
+        if( ! data){
         return res.json({msg : " El usuario no se encuentra registrado"})
     }
 

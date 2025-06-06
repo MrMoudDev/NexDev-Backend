@@ -8,8 +8,12 @@ import dbConnect from './config/mongo.config.mjs';
 
 import auth from "./routes/auth.route.mjs";
 
+import developerProfile from "./routes/developerProfile.routes.mjs";
+
 // ------>  Paso2: Ejecutamos Express
 const app = express();   // Invocacion o ejecucion de express
+
+const PORT = process.env.PORT ?? 3000
 
 dbConnect();
 // ------>  Paso3: Crear los EndPoints (Puntos de acceso)
@@ -19,12 +23,12 @@ app.use(express.json())    //Habilita el iterprete de objetos json
 app.use(user)  // Implementando las rutas de user
 
 
-
+app.use( developerProfile)
 app.use( auth )
 
 // ------>  Paso4: Lanzamos el servidor Web usando express escuchando en el puerto 3000
 //                 https://localhost:<port>
-app.listen( 3000, () => {
-    console.log( 'Servidor corriendo en http://localhost:3000))' )
+app.listen( PORT, () => {
+    console.log(`servidor corriendo en http://localhost:${PORT}`)
 } );
 

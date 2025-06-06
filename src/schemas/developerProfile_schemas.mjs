@@ -1,9 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 
 // Define la estructura de datos del documento
 
 const developerProfileSchema = new mongoose.Schema({
-        userId: String,
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "users"
+        }, 
         bio: String,
         skills: [String],
         experience: String,
