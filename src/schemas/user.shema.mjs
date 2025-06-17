@@ -27,7 +27,8 @@ const userShema = new mongoose.Schema({
     role:{
         type:String,
         enum: ["admin","especialista","paciente"],
-        default: "paciente"
+        default: "paciente",
+        required: [true, "El rol es requerido"]
     },
 
 },{
